@@ -4,6 +4,7 @@ using System;
 using System.Net.Sockets;
 using System.Text;
 using System.Text.Json;
+using System.Threading.Tasks;
 
 namespace Publisher
 {
@@ -22,6 +23,9 @@ namespace Publisher
                 ClientConnection = new TcpClient(hostName, portNum);
 
                 TCPNetworkStream = ClientConnection.GetStream();
+
+                Task newRead = Task.Run(() => StreamRead.BeginStreamRead());
+
                 return true;
             }
             catch

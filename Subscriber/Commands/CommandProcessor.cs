@@ -26,6 +26,11 @@ namespace Subscriber.Commands
             {
                 Console.WriteLine(command.MessageBody);
             }
+            else if (command.CommandType == CommandType.Poll)
+            {
+                Command poll = new Command(CommandType.Poll);
+                SendMessage.Send(poll);
+            }
         }
     }
 }

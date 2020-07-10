@@ -12,7 +12,7 @@ namespace Subscriber
 
         public string MessageBody;
 
-        public Command(CommandType commandtype, string topic, string messagebody)
+        public Command(CommandType commandtype, string topic = "", string messagebody = "")
         {
             CommandType = commandtype;
             Topic = topic;
@@ -25,6 +25,7 @@ namespace Subscriber
         NewMessage,
         Subscribe,
         Unsubscribe,
-        MessageTypeQuery
+        MessageTypeQuery,
+        Poll
     }
 }

@@ -16,11 +16,6 @@ namespace Publisher.Commands
             Command command = new Command(CommandType.CreateTopic, topic, "");
 
             SendMessage.Send(command);
-
-            Command returnCommand = ReadMessage.Read();
-
-            Console.WriteLine(returnCommand.MessageBody);
-
         }
 
         public static void DeleteTopic()
@@ -32,10 +27,6 @@ namespace Publisher.Commands
             Command command = new Command(CommandType.DeleteTopic, topic, "");
 
             SendMessage.Send(command);
-
-            Command returnCommand = ReadMessage.Read();
-
-            Console.WriteLine(returnCommand.MessageBody);
         }
     }
 }

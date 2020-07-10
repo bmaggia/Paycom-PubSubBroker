@@ -21,11 +21,6 @@ namespace Publisher.Commands
                 Command command = new Command(CommandType.NewMessage, messageSubject, messageBody);
 
                 SendMessage.Send(command);
-
-                Command returnCommand = ReadMessage.Read();
-
-                Console.WriteLine(returnCommand.MessageBody);
-
             }
         }
     }

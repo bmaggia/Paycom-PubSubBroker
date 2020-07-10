@@ -12,7 +12,7 @@ namespace Publisher
 
         public string MessageBody;
 
-        public Command(CommandType commandtype, string topic, string messagebody)
+        public Command(CommandType commandtype, string topic = "", string messagebody = "")
         {
             CommandType = commandtype;
             Topic = topic;
@@ -27,6 +27,7 @@ namespace Publisher
         Unsubscribe,
         MessageTypeQuery,
         CreateTopic,
-        DeleteTopic
+        DeleteTopic,
+        Poll
     }
 }

@@ -14,7 +14,7 @@ namespace PubSubBroker.Commands
 
         public string MessageBody;
 
-        public Command (CommandType commandtype, string topic, string messagebody)
+        public Command (CommandType commandtype, string topic = "", string messagebody = "")
         {
             CommandType = commandtype;
             Topic = topic;
@@ -29,6 +29,7 @@ namespace PubSubBroker.Commands
         Unsubscribe,
         MessageTypeQuery,
         CreateTopic,
-        DeleteTopic
+        DeleteTopic,
+        Poll
     }
 }
