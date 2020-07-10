@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace PubSubBroker
@@ -14,8 +12,6 @@ namespace PubSubBroker
         public static List<TcpClient> TCPClients = new List<TcpClient>();
 
         public static TcpListener listener = new TcpListener(IPAddress.Any, 13);
-
-        public static ManualResetEvent tcpClientConnected = new ManualResetEvent(false);
 
         public static async Task StartTCPServer()
         {

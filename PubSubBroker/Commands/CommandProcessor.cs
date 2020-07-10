@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net.Sockets;
-using System.Text;
 
 namespace PubSubBroker.Commands
 {
@@ -27,7 +25,6 @@ namespace PubSubBroker.Commands
                 Command returnCommand = new Command(CommandType.Subscribe, command.Topic, result);
 
                 SendMessage.Send(returnCommand, netstream);
-
             }
             else if (command.CommandType == CommandType.Unsubscribe)
             {

@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Net.Sockets;
-using System.Text;
 
 namespace Subscriber.Commands
 {
@@ -14,22 +11,14 @@ namespace Subscriber.Commands
             {
                 Console.WriteLine("New Message; Topic: " + command.Topic + "   Message: " + command.MessageBody);
             }
-            if (command.CommandType == CommandType.Subscribe)
-            {
-                Console.WriteLine(command.MessageBody);
-            }
-            else if (command.CommandType == CommandType.Unsubscribe)
-            {
-                Console.WriteLine(command.MessageBody);
-            }
-            else if (command.CommandType == CommandType.MessageTypeQuery)
-            {
-                Console.WriteLine(command.MessageBody);
-            }
             else if (command.CommandType == CommandType.Poll)
             {
                 Command poll = new Command(CommandType.Poll);
                 SendMessage.Send(poll);
+            }
+            else
+            {
+                Console.WriteLine(command.MessageBody);
             }
         }
     }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace PubSubBroker.Commands
+﻿namespace PubSubBroker.Commands
 {
     // Command used for client/server communcation.
     class Command

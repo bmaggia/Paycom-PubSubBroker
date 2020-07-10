@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Subscriber
+﻿namespace Subscriber
 {
+    // Command used for client/server communcation.
     class Command
     {
         public CommandType CommandType;
 
+        // Topic of command is not used MessageTypeQuery
         public string Topic;
 
         public string MessageBody;
@@ -20,12 +18,14 @@ namespace Subscriber
         }
     }
 
-    enum CommandType
+    public enum CommandType
     {
         NewMessage,
         Subscribe,
         Unsubscribe,
         MessageTypeQuery,
+        CreateTopic,
+        DeleteTopic,
         Poll
     }
 }

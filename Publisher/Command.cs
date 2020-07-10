@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Publisher
+﻿namespace Publisher
 {
+    // Command used for client/server communcation.
     class Command
     {
         public CommandType CommandType;
 
+        // Topic of command is not used MessageTypeQuery
         public string Topic;
 
         public string MessageBody;
@@ -20,7 +18,7 @@ namespace Publisher
         }
     }
 
-    enum CommandType
+    public enum CommandType
     {
         NewMessage,
         Subscribe,

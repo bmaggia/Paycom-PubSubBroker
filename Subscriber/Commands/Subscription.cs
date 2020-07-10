@@ -1,17 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Subscriber.Commands
 {
-    public static class Subscription
+    class Subscription
     {
         public static void NewSubscription()
         {
             Console.WriteLine("Topic Name:");
             string topic = Console.ReadLine();
 
-            Command command = new Command(CommandType.Subscribe, topic, "");
+            Command command = new Command(CommandType.Subscribe, topic);
 
             SendMessage.Send(command);
         }
@@ -21,7 +19,7 @@ namespace Subscriber.Commands
             Console.WriteLine("Topic Name:");
             string topic = Console.ReadLine();
 
-            Command command = new Command(CommandType.Unsubscribe, topic, "");
+            Command command = new Command(CommandType.Unsubscribe, topic);
 
             SendMessage.Send(command);
         }

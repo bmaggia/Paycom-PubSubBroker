@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Publisher.Commands
 {
@@ -13,7 +11,7 @@ namespace Publisher.Commands
 
             string topic = Console.ReadLine();
 
-            Command command = new Command(CommandType.CreateTopic, topic, "");
+            Command command = new Command(CommandType.CreateTopic, topic);
 
             SendMessage.Send(command);
         }
@@ -24,7 +22,7 @@ namespace Publisher.Commands
 
             string topic = Console.ReadLine();
 
-            Command command = new Command(CommandType.DeleteTopic, topic, "");
+            Command command = new Command(CommandType.DeleteTopic, topic);
 
             SendMessage.Send(command);
         }

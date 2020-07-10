@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Net.Sockets;
 using PubSubBroker.Commands;
 
 
 namespace PubSubBroker
 {
-    public class Messages
+    class Messages
     {
         public static List<Message> BrokerMessages = new List<Message>();
 
@@ -118,7 +116,7 @@ namespace PubSubBroker
         }
     }
 
-    public class Message
+    class Message
     {
         public string Topic;
 

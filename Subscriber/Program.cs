@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text;
 using Subscriber.Commands;
 
 namespace Subscriber
@@ -41,26 +40,6 @@ namespace Subscriber
                 else if (userInput == "query topics")
                 {
                     QueryTopics.Query();
-                }
-
-                switch (userInput)
-                {
-                    case "Help":
-                        Console.WriteLine("1) Subscribe");
-                        Console.WriteLine("2) Unsubscribe");
-                        Console.WriteLine("3) Query Topics");
-                        break;
-                    case "Subscribe":
-                        Subscription.NewSubscription();
-                        break;
-                    case "Unsubscribe":
-                        Subscription.RemoveSubscription();
-                        break;
-                    case "Query Topics":
-                        QueryTopics.Query();
-                        break;
-                    default:
-                        break;
                 }
 
             }
