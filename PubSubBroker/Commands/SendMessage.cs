@@ -6,11 +6,19 @@ namespace PubSubBroker.Commands
 {
     class SendMessage
     {
-        public static void Send(Command command, NetworkStream netstream)
+        public static bool Send(Command command, NetworkStream netstream)
         {
             string jsonString = JsonConvert.SerializeObject(command);
 
-            netstream.Write(Encoding.ASCII.GetBytes(jsonString));
+            try
+            {
+                netstream.Write(Encoding.ASCII.GetBytes(jsonString));
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

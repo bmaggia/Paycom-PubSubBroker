@@ -11,12 +11,7 @@ namespace Subscriber.Commands
             {
                 Console.WriteLine("New Message; Topic: " + command.Topic + "   Message: " + command.MessageBody);
             }
-            else if (command.CommandType == CommandType.Poll)
-            {
-                Command poll = new Command(CommandType.Poll);
-                SendMessage.Send(poll);
-            }
-            else
+            else if (command.CommandType != CommandType.Poll)
             {
                 Console.WriteLine(command.MessageBody);
             }

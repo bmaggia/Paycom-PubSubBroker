@@ -19,12 +19,7 @@ namespace Publisher
 
                 Command command = JsonConvert.DeserializeObject<Command>(Encoding.ASCII.GetString(netBuffer));
 
-                if (command.CommandType == CommandType.Poll)
-                {
-                    Command poll = new Command(CommandType.Poll);
-                    SendMessage.Send(poll);
-                }
-                else
+                if (command.CommandType != CommandType.Poll)
                 {
                     Console.WriteLine(command.MessageBody);
                 }

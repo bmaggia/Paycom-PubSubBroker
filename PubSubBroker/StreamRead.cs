@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Net.Sockets;
 using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
 using PubSubBroker.Commands;
 using System.Timers;
+using System.Threading.Tasks;
 
 namespace PubSubBroker
 {
@@ -14,11 +14,10 @@ namespace PubSubBroker
         {
             bool connected = true;
 
-            bool polling = false;
 
             Timer pollTimer = new Timer(30000);
             pollTimer.AutoReset = true;
-            pollTimer.Elapsed += (sender, e) => PollClient(sender, e, ref polling, ref connected, netStream);
+            pollTimer.Elapsed += (sender, e) => PollClient(sender, e, ref connected, netStream, ref pollTimer);
             pollTimer.Start();
 
             byte[] netBuffer = new byte[1024];
@@ -27,8 +26,6 @@ namespace PubSubBroker
             {
                 await netStream.ReadAsync(netBuffer);
 
-                pollTimer.Interval = 30000;
-                polling = false;
 
                 Command command = JsonConvert.DeserializeObject<Command>(Encoding.ASCII.GetString(netBuffer));
 
@@ -38,18 +35,21 @@ namespace PubSubBroker
             }
         }
 
-        private static void PollClient(Object source, ElapsedEventArgs e, ref bool polling, ref bool connected, NetworkStream netstream)
+        private static void PollClient(Object source, ElapsedEventArgs e, ref bool connected, NetworkStream netstream, ref Timer timer)
         {
-            if (polling)
+            Command command = new Command(CommandType.Poll);
+            connected = SendMessage.Send(command, netstream);
+
+            if (!connected)
             {
                 Console.WriteLine("Disconnecting Client");
+                Messages.BrokerMessages.ForEach(c => c.Subscribers.Remove(netstream));
+
                 connected = false;
-            }
-            else
-            {
-                Command command = new Command(CommandType.Poll);
-                SendMessage.Send(command, netstream);
-                polling = true;
+                netstream.Close();
+                netstream.Dispose();
+                timer.Stop();
+                timer.Dispose();
             }
         }
     }
