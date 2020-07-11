@@ -9,7 +9,7 @@ The server will disconnect closed clients by polling them every 30 seconds.
 
 ## How to use
 Publisher/Subscriber/Broker are all included in the PubSubBroker.sln. Publish the three projects and run them individually. <br>
-There are no limits to the amount of publishers/subscribers, and not limit on the amount of topics that can be created. <br>
+There are no limits on the number of publishers or subscribers, and no limit on the amount of topics that can be created. <br>
 
 Type "Help" on either the publisher or subscriber to get the list of commands. Commands are not case sensitive. <br>
 
