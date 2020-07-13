@@ -1,4 +1,4 @@
-# Paycom-PubSubBroker
+# PubSubBroker
 
 ## About
 Publisher/Subscriber/Broker project for Paycom's summer engagment program. <br>
