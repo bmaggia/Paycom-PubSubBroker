@@ -1,4 +1,4 @@
-﻿
+﻿// empty first line
 using System;
 using System.Net.Sockets;
 using System.Threading.Tasks;
@@ -23,7 +23,7 @@ namespace Subscriber
 
                 TCPNetworkStream = ClientConnection.GetStream();
 
-                Task newRead = Task.Run(() => StreamRead.BeginStreamRead());
+                Task newRead = Task.Run(() => StreamRead.BeginStreamRead()); // this can be made a method group as well
 
                 return true;
 
@@ -38,7 +38,7 @@ namespace Subscriber
                     ConnectTCP();
                     return true;
                 }
-                else
+                else // The else is not necessary. Just do an if followed by a return.
                 {
                     return false;
                 }

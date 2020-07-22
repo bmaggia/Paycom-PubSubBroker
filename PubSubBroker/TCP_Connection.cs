@@ -11,7 +11,7 @@ namespace PubSubBroker
 
         public static List<TcpClient> TCPClients = new List<TcpClient>();
 
-        public static TcpListener listener = new TcpListener(IPAddress.Any, 13);
+        public static TcpListener listener = new TcpListener(IPAddress.Any, 13); // public fields should be capitalized
 
         public static async Task StartTCPServer()
         {
@@ -27,7 +27,7 @@ namespace PubSubBroker
                 Console.WriteLine("New Client Connected");
                 
                 TCPClients.Add(newClient);
-                Task newRead = Task.Run(() => StreamRead.BeginStreamRead(newClient.GetStream()));
+                Task newRead = Task.Run(() => StreamRead.BeginStreamRead(newClient.GetStream())); // newRead is not used
             }
         }
     }  

@@ -8,6 +8,8 @@ namespace PubSubBroker.Commands
 
         public static void ProcessCommand(Command command, NetworkStream netstream)
         {
+            // I really like your use of the enum here. 
+            // There is quite a bit of repeated code. There might be a way to abstract some of this out, though I can't think of anything off the top of my head right now.
             if (command.CommandType == CommandType.NewMessage)
             {
                 Console.WriteLine("New Message: " + command.Topic + ": " + command.MessageBody);

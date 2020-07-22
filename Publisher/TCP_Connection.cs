@@ -20,6 +20,7 @@ namespace Publisher
 
                 TCPNetworkStream = ClientConnection.GetStream();
 
+                // newRead is never used, you can use a method group here and just do Task.Run(StreamRead.BeginStreamRead());
                 Task newRead = Task.Run(() => StreamRead.BeginStreamRead());
 
                 return true;
@@ -34,7 +35,7 @@ namespace Publisher
                     ConnectTCP();
                     return true;
                 }
-                else
+                else // the else here is not entirely necessary, it could go straight to return false;
                 {
                     return false;
                 }

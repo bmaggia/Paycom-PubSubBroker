@@ -34,8 +34,8 @@ namespace PubSubBroker
             {
                 return topic + " already exists";
             }
-            else // Topic does not exist
-            {
+            else // Topic does not exist -- the else here could also be removed
+            { 
                 BrokerMessages.Add(new Message(topic));
                 return topic + " successfully created";
             }

@@ -23,6 +23,7 @@ namespace Publisher
 
                 if (userInput == "help")
                 {
+                    // I think this could be slightly improved by storing the output as a single string and doing a single WriteLine()
                     Console.WriteLine("Commands:");
                     Console.WriteLine("Compose Message");
                     Console.WriteLine("Query Topics");
