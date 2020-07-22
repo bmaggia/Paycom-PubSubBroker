@@ -10,7 +10,7 @@ namespace Publisher
     class StreamRead
     {
         public static List<byte[]> ReadBuffers = new List<byte[]>();
-        static byte[] netBuffer = new byte[1024];
+        static byte[] netBuffer = new byte[1024]; // this can be made read only
         public static async Task BeginStreamRead()
         {
             while (true)

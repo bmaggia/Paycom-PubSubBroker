@@ -8,6 +8,7 @@ namespace PubSubBroker.Commands
     {
         public static bool Send(Command command, NetworkStream netstream)
         {
+            // good Json serialization
             string jsonString = JsonConvert.SerializeObject(command);
 
             try

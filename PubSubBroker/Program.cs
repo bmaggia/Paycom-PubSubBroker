@@ -9,7 +9,8 @@ namespace PubSubBroker
     {
         static void Main(string[] args)
         {
-
+            // I'm fairly certain the TCPServer variable is not doing anything. You can also use a method group here. So the line would look as follows:
+            // Task.Run(TCP_Connection.StartTCPServer);
             Task TCPServer = Task.Run(() => TCP_Connection.StartTCPServer());
 
             string userInput = "";

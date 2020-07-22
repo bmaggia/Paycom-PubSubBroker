@@ -26,7 +26,6 @@ namespace PubSubBroker
             {
                 await netStream.ReadAsync(netBuffer);
 
-
                 Command command = JsonConvert.DeserializeObject<Command>(Encoding.ASCII.GetString(netBuffer));
 
                 CommandProcessor.ProcessCommand(command, netStream);
@@ -35,6 +34,7 @@ namespace PubSubBroker
             }
         }
 
+        // If source and e are not used, I am not certain that you need to include them as variables.
         private static void PollClient(Object source, ElapsedEventArgs e, ref bool connected, NetworkStream netstream, ref Timer timer)
         {
             Command command = new Command(CommandType.Poll);

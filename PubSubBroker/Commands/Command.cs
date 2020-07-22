@@ -10,7 +10,7 @@
 
         public string MessageBody;
 
-        public Command (CommandType commandtype, string topic = "", string messagebody = "")
+        public Command (CommandType commandtype, string topic = "", string messagebody = "") // camel case is good for variable names
         {
             CommandType = commandtype;
             Topic = topic;

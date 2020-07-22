@@ -14,6 +14,7 @@ namespace Subscriber
 
             if (connected)
             {
+                // C# has escaped strings that are useful in this scenario: @"";
                 Console.WriteLine("Connected to server. Type \"Help\" for a list of commands.");
             }
 
