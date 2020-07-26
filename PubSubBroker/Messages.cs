@@ -5,7 +5,7 @@ using PubSubBroker.Commands;
 
 namespace PubSubBroker
 {
-    class Messages
+    public class Messages
     {
         public static List<Message> BrokerMessages = new List<Message>();
 
@@ -111,7 +111,7 @@ namespace PubSubBroker
         }
     }
 
-    class Message
+    public class Message
     {
         public string Topic;
 

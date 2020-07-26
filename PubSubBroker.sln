@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Subscriber", "Subscriber\Su
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PubSubBroker.lib", "PubSubBroker.lib\PubSubBroker.lib.csproj", "{0B96955C-F423-411D-A6A5-3F29D4D7BC38}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrokerTests", "BrokerTests\BrokerTests.csproj", "{DFDE2D98-25EB-4C29-AEFE-0CE119B9513C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{0B96955C-F423-411D-A6A5-3F29D4D7BC38}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B96955C-F423-411D-A6A5-3F29D4D7BC38}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B96955C-F423-411D-A6A5-3F29D4D7BC38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFDE2D98-25EB-4C29-AEFE-0CE119B9513C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFDE2D98-25EB-4C29-AEFE-0CE119B9513C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFDE2D98-25EB-4C29-AEFE-0CE119B9513C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFDE2D98-25EB-4C29-AEFE-0CE119B9513C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

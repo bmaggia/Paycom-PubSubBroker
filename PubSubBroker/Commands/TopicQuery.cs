@@ -3,7 +3,7 @@ using System.Net.Sockets;
 
 namespace PubSubBroker.Commands
 {
-    class TopicQuery
+    public class TopicQuery
     {
         public static void Query(NetworkStream netstream)
         {
