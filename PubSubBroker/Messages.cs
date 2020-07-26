@@ -3,7 +3,6 @@ using System.Linq;
 using System.Net.Sockets;
 using PubSubBroker.Commands;
 
-
 namespace PubSubBroker
 {
     class Messages
@@ -13,7 +12,7 @@ namespace PubSubBroker
         public static void AddMessage(string topic, string messagebody)
         {
             // index = -1 when topic does not exist.
-            int index = BrokerMessages.FindIndex(m => m.Topic == topic);
+            var index = BrokerMessages.FindIndex(m => m.Topic == topic);
 
             if (index >= 0) // Add message to existing topic
             {
@@ -28,7 +27,7 @@ namespace PubSubBroker
 
         public static string CreateTopic(string topic)
         {
-            int index = BrokerMessages.FindIndex(m => m.Topic == topic);
+            var index = BrokerMessages.FindIndex(m => m.Topic == topic);
 
             if (index >= 0) // Topic exists
             {
@@ -43,7 +42,7 @@ namespace PubSubBroker
 
         public static string DeleteTopic(string topic)
         {
-            int index = BrokerMessages.FindIndex(m => m.Topic == topic);
+            var index = BrokerMessages.FindIndex(m => m.Topic == topic);
 
             if (index >= 0) // Topic exists
             {
@@ -58,12 +57,12 @@ namespace PubSubBroker
 
         static void PublishToSubscribers(int index)
         {
-            Message message = BrokerMessages[index];
+            var message = BrokerMessages[index];
             // Get last (newest) message from list
-            Command command = new Command(CommandType.NewMessage, message.Topic, message.TopicMessages.Last());
+            var command = new Command(CommandType.NewMessage, message.Topic, message.TopicMessages.Last());
 
             // Send to all subscribers
-            foreach(NetworkStream netstream in message.Subscribers)
+            foreach(var netstream in message.Subscribers)
             {
                 SendMessage.Send(command, netstream);
             }
@@ -72,10 +71,10 @@ namespace PubSubBroker
         public static string AddSubscriber(string topic, NetworkStream netstream)
         {
             // Check if topic exists
-            int index = BrokerMessages.FindIndex(m => m.Topic == topic);
+            var index = BrokerMessages.FindIndex(m => m.Topic == topic);
             if (index >= 0)
             {
-                int subscriberIndex = BrokerMessages[index].Subscribers.IndexOf(netstream);
+                var subscriberIndex = BrokerMessages[index].Subscribers.IndexOf(netstream);
                 if (subscriberIndex >= 0) // If user is subscribed
                 {
                     return "Already subscribed to: " + topic;
@@ -86,19 +85,17 @@ namespace PubSubBroker
                     return "Successfully subscribed to: " + topic;
                 }
             }
-            else
-            {
-                return topic + " does not exist";
-            }
+
+            return topic + " does not exist";
         }
 
         public static string RemoveSubscriber(string topic, NetworkStream netstream)
         {
             // Check if topic exists
-            int index = BrokerMessages.FindIndex(m => m.Topic == topic);
+            var index = BrokerMessages.FindIndex(m => m.Topic == topic);
             if (index >= 0)
             {
-                int subscriberIndex = BrokerMessages[index].Subscribers.IndexOf(netstream);
+                var subscriberIndex = BrokerMessages[index].Subscribers.IndexOf(netstream);
                 if (subscriberIndex >= 0) // If user is subscribed
                 {
                     BrokerMessages[index].Subscribers.Remove(netstream);
@@ -109,10 +106,8 @@ namespace PubSubBroker
                     return "Not subscribed to: " + topic;
                 }
             }
-            else
-            {
-                return topic + " does not exist";
-            }
+
+            return topic + " does not exist";
         }
     }
 

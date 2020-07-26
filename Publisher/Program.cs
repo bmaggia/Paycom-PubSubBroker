@@ -7,7 +7,7 @@ namespace Publisher
     {
         static void Main(string[] args)
         {
-            string userInput = "";
+            var userInput = "";
 
             TCP_Connection tcpConnection = new TCP_Connection();
             bool connected = tcpConnection.ConnectTCP();
@@ -23,11 +23,10 @@ namespace Publisher
 
                 if (userInput == "help")
                 {
-                    Console.WriteLine("Commands:");
-                    Console.WriteLine("Compose Message");
-                    Console.WriteLine("Query Topics");
-                    Console.WriteLine("Create Topic");
-                    Console.WriteLine("Delete Topic");
+                    Console.WriteLine("Commands: \n" +
+                        "Compose Message \n" +
+                        "Query Topics \n" +
+                        "Delete Topic \n");
                 }
                 else if (userInput == "compose message")
                 {

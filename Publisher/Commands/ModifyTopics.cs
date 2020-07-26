@@ -9,9 +9,9 @@ namespace Publisher.Commands
         {
             Console.WriteLine("Name of Topic:");
 
-            string topic = Console.ReadLine();
+            var topic = Console.ReadLine();
 
-            Command command = new Command(CommandType.CreateTopic, topic);
+            var command = new Command(CommandType.CreateTopic, topic);
 
             SendMessage.Send(command);
         }
@@ -20,9 +20,9 @@ namespace Publisher.Commands
         {
             Console.WriteLine("Name of Topic:");
 
-            string topic = Console.ReadLine();
+            var topic = Console.ReadLine();
 
-            Command command = new Command(CommandType.DeleteTopic, topic);
+            var command = new Command(CommandType.DeleteTopic, topic);
 
             SendMessage.Send(command);
         }

@@ -7,14 +7,14 @@ namespace Subscriber
     {
         static void Main(string[] args)
         {
-            string userInput = "";
+            var userInput = "";
 
             TCP_Connection tcpConnection = new TCP_Connection();
             bool connected = tcpConnection.ConnectTCP();
 
             if (connected)
             {
-                Console.WriteLine("Connected to server. Type \"Help\" for a list of commands.");
+                Console.WriteLine(@"Connected to server. Type ""Help"" for a list of commands.");
             }
 
             while (userInput != "quit" && connected)
@@ -23,10 +23,10 @@ namespace Subscriber
 
                 if (userInput == "help")
                 {
-                    Console.WriteLine("Commands:");
-                    Console.WriteLine("Subscribe");
-                    Console.WriteLine("Unsubscribe");
-                    Console.WriteLine("Query Topics");
+                    Console.WriteLine("Commands: \n" +
+                        "Subscribe" +
+                        "Unsubscribe" +
+                        "Query Topics");
 
                 }
                 else if (userInput == "subscribe")

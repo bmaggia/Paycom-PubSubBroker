@@ -7,16 +7,16 @@ namespace Publisher.Commands
         public static void Compose()
         {
             Console.WriteLine("Message Topic:");
-            string messageSubject = Console.ReadLine();
+            var messageSubject = Console.ReadLine();
             Console.WriteLine("Message Body:");
-            string messageBody = Console.ReadLine();
+            var messageBody = Console.ReadLine();
 
             Console.WriteLine("Send? (y/n)");
-            string send = Console.ReadLine();
+            var send = Console.ReadLine();
 
             if (send == "y")
             {
-                Command command = new Command(CommandType.NewMessage, messageSubject, messageBody);
+                var command = new Command(CommandType.NewMessage, messageSubject, messageBody);
 
                 SendMessage.Send(command);
             }

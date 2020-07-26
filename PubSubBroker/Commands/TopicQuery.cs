@@ -13,7 +13,7 @@ namespace PubSubBroker.Commands
             bool[] subscribed = Messages.BrokerMessages.Select(s => s.Subscribers.Contains(netstream)).ToArray();
 
             // Format string for clients
-            string output = "";
+            var output = "";
             for(int i = 0; i < topics.Length; i++)
             {
                 if (subscribed[i])
@@ -26,7 +26,7 @@ namespace PubSubBroker.Commands
 
             output += "*Currently subscribed to";
 
-            Command command = new Command(CommandType.MessageTypeQuery, "", output);
+            var command = new Command(CommandType.MessageTypeQuery, "", output);
 
             SendMessage.Send(command, netstream);
         }

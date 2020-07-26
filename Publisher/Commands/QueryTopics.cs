@@ -4,7 +4,7 @@
     {
         public static void Query()
         {
-            Command command = new Command(CommandType.MessageTypeQuery);
+            var command = new Command(CommandType.MessageTypeQuery);
             SendMessage.Send(command);
         }
     }

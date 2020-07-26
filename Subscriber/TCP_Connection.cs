@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Net.Sockets;
 using System.Threading.Tasks;
 
@@ -23,7 +22,7 @@ namespace Subscriber
 
                 TCPNetworkStream = ClientConnection.GetStream();
 
-                Task newRead = Task.Run(() => StreamRead.BeginStreamRead());
+                Task.Run(StreamRead.BeginStreamRead);
 
                 return true;
 
@@ -32,16 +31,14 @@ namespace Subscriber
             {
                 Console.WriteLine("Can't connect to broker, Try again? (y/n)");
 
-                string input = Console.ReadLine();
+                var input = Console.ReadLine();
                 if (input == "y")
                 {
                     ConnectTCP();
                     return true;
                 }
-                else
-                {
-                    return false;
-                }
+
+                return false;
             }
         }
     }

@@ -2,13 +2,14 @@
 using System.Net.Sockets;
 using System.Text;
 
+
 namespace PubSubBroker.Commands
 {
     class SendMessage
     {
         public static bool Send(Command command, NetworkStream netstream)
         {
-            string jsonString = JsonConvert.SerializeObject(command);
+            var jsonString = JsonConvert.SerializeObject(command);
 
             try
             {

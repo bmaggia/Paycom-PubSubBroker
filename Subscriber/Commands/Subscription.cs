@@ -7,9 +7,9 @@ namespace Subscriber.Commands
         public static void NewSubscription()
         {
             Console.WriteLine("Topic Name:");
-            string topic = Console.ReadLine();
+            var topic = Console.ReadLine();
 
-            Command command = new Command(CommandType.Subscribe, topic);
+            var command = new Command(CommandType.Subscribe, topic);
 
             SendMessage.Send(command);
         }
@@ -17,9 +17,9 @@ namespace Subscriber.Commands
         public static void RemoveSubscription()
         {
             Console.WriteLine("Topic Name:");
-            string topic = Console.ReadLine();
+            var topic = Console.ReadLine();
 
-            Command command = new Command(CommandType.Unsubscribe, topic);
+            var command = new Command(CommandType.Unsubscribe, topic);
 
             SendMessage.Send(command);
         }

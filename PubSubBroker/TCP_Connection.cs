@@ -11,23 +11,23 @@ namespace PubSubBroker
 
         public static List<TcpClient> TCPClients = new List<TcpClient>();
 
-        public static TcpListener listener = new TcpListener(IPAddress.Any, 13);
+        public static TcpListener Listener = new TcpListener(IPAddress.Any, 13);
 
         public static async Task StartTCPServer()
         {
 
-            listener.Start();
+            Listener.Start();
             Console.WriteLine("Waiting for connection");
 
 
             while (true)
             {
-                TcpClient newClient = await listener.AcceptTcpClientAsync();
+                TcpClient newClient = await Listener.AcceptTcpClientAsync();
 
                 Console.WriteLine("New Client Connected");
                 
                 TCPClients.Add(newClient);
-                Task newRead = Task.Run(() => StreamRead.BeginStreamRead(newClient.GetStream()));
+                _ = Task.Run(() => StreamRead.BeginStreamRead(newClient.GetStream())); // not having a variable leads to a warning. Is this the correct way to get rid of that warning?
             }
         }
     }  

@@ -10,15 +10,15 @@ namespace PubSubBroker
         static void Main(string[] args)
         {
 
-            Task TCPServer = Task.Run(() => TCP_Connection.StartTCPServer());
+            Task.Run(TCP_Connection.StartTCPServer);
 
-            string userInput = "";
+            var userInput = "";
             while(userInput != "Quit")
             {
                 userInput = Console.ReadLine();
             }
 
-            TCP_Connection.listener.Stop();
+            TCP_Connection.Listener.Stop();
         }
     }
 }

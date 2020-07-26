@@ -12,12 +12,12 @@ namespace PubSubBroker
     {
         public static async Task BeginStreamRead(NetworkStream netStream)
         {
-            bool connected = true;
+            var connected = true;
 
 
-            Timer pollTimer = new Timer(30000);
+            var pollTimer = new Timer(30000);
             pollTimer.AutoReset = true;
-            pollTimer.Elapsed += (sender, e) => PollClient(sender, e, ref connected, netStream, ref pollTimer);
+            pollTimer.Elapsed += (sender, e) => PollClient(ref connected, netStream, ref pollTimer);
             pollTimer.Start();
 
             byte[] netBuffer = new byte[1024];
@@ -27,7 +27,7 @@ namespace PubSubBroker
                 await netStream.ReadAsync(netBuffer);
 
 
-                Command command = JsonConvert.DeserializeObject<Command>(Encoding.ASCII.GetString(netBuffer));
+                var command = JsonConvert.DeserializeObject<Command>(Encoding.ASCII.GetString(netBuffer));
 
                 CommandProcessor.ProcessCommand(command, netStream);
 
@@ -35,9 +35,9 @@ namespace PubSubBroker
             }
         }
 
-        private static void PollClient(Object source, ElapsedEventArgs e, ref bool connected, NetworkStream netstream, ref Timer timer)
+        private static void PollClient(ref bool connected, NetworkStream netstream, ref Timer timer)
         {
-            Command command = new Command(CommandType.Poll);
+            var command = new Command(CommandType.Poll);
             connected = SendMessage.Send(command, netstream);
 
             if (!connected)

@@ -10,7 +10,7 @@ namespace Subscriber
     class StreamRead
     {
         public static List<byte[]> ReadBuffers = new List<byte[]>();
-        static byte[] netBuffer = new byte[1024];
+        static readonly byte[] netBuffer = new byte[1024];
         public static async Task BeginStreamRead()
         {
             while (true)
